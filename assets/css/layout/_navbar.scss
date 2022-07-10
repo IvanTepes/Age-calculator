@@ -1,0 +1,24 @@
+
+
+// Navbar
+
+
+.navbar {
+    height: 6rem;
+    width: 100%;
+
+
+    &__brand {
+        vertical-align: sub;
+        font-family: $primary__font;
+        font-size: 2rem;
+    }
+
+
+    &__logo--image {
+        height: 4rem;
+        width: 4rem;
+    }
+}
+
+
