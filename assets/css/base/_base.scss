@@ -14,7 +14,7 @@ body {
 .form-select {
     color: var(--font-color);
     margin: 1rem 0 2rem auto;
-    background-image: url(assets/images/arrow-down.svg);
+    background-image: url(/assets/images/arrow-down.svg);
     background-size: 25px 25px;
 
     &:focus {
