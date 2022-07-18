@@ -219,7 +219,7 @@ input[type=checkbox] {
   border-radius: 10px;
 }
 .theme__toggle--btn input[type=checkbox] + label::before {
-  content: url(assets/images/toggle/light-mode.svg);
+  content: url(./assets/images/toggle/light-mode.svg);
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 10px;
@@ -229,7 +229,7 @@ input[type=checkbox] {
   line-height: 51px;
 }
 .theme__toggle--btn input[type=checkbox]:checked + label::before {
-  content: url(assets/images/toggle/dark.png);
+  content: url(./assets/images/toggle/dark.png);
   background: var(--theme-color);
   box-shadow: var(--box-shadow);
   border-radius: 10px;
