@@ -3,34 +3,19 @@
 // Navbar
 
 
-
-.results {
-    width: 85%;
-    /* height: calc(100% - 9rem); */
-    /* background-color: red; */
-    &__birth-date {
-        &--header {
-            
-        }
-        &--date {
-
-        }
-    }
-    &__alive-table {
-
-    }
-
-
-}
-
-
 .result {
+
+    @include column-align--middle();
+
     &__item {
-        @include drop-shadow;
+        
+        @include element-shadow(var(--box-shadow), $border-radius);
+
         &--header {
             margin-top: 0.5rem;
             font-family: $primary__font;
         }
+
         &--date {
             color: red;
         }
@@ -41,16 +26,26 @@
         margin-top: 3rem;
 
         &--new-date {
-            box-shadow: inset 3px 2px 5px 0 rgb(255 255 255 / 50%), rgb(104 139 255 / 10%) 7px 3px 10px, rgb(0 0 0 / 10%) 7px 5px 10px;
-            border-radius: 10px;
+            
+            @include element-shadow(var(--box-shadow), $border-radius);
+
             margin-bottom: 1rem;
             padding: 0.7rem 0.95rem;
             border: none;
-            color: rgba(74, 75, 81, 0.9294117647);
+            color: $white;
             font-family: "Roboto", sans-serif;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
+
+            &:focus {
+                box-shadow: var(--box-shadow);
+            }
+        
+            &:hover {
+                box-shadow: var(--box-inset);
+                background-color: $gray-400;
+            }
         }
     }                    
 }

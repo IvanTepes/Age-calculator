@@ -6,7 +6,6 @@
 // -----------------------------------------------------------------------------
 
 
-
 // Months names
 const monthsNames = [
     'January',
@@ -88,7 +87,6 @@ function displayDate() {
     document.getElementById("js-display__date").textContent = todayDate;
 
     setTimeout(displayDate, 1000);
-    return todayDate; // Just returned for console log
 }
 
 
@@ -121,8 +119,89 @@ function displayTime() {
     document.getElementById("js-display__time").textContent = time;
     
     setTimeout(displayTime, 1000);
-    return time // Just returned for console log
 }
+
+
+
+// -----------------------------------------------------------------------------
+// -----------------------------------  END  -----------------------------------
+// -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+// ------------------  DETERMINATED LENGHT OF SELECTED MONTH  ------------------
+// -----------------------------------------------------------------------------
+
+/* 
+    To dynamically determinate month length
+    * try later *
+*/
+
+
+/* HTMLElement.prototype.empty = function() {
+    while (this.firstChild) {
+        this.removeChild(this.firstChild);
+    }
+}
+
+function clearAll() {
+    let selectDay = document.getElementById('js-selectDay');
+    while (selectDay.children.length > 1) {
+        selectDay.removeChild(selectDay.lastChild);
+    }
+}
+
+// Months names with lenght in days
+const monthDays = {
+    January: 31,
+    February: function() {
+        daysInMonth();
+    },
+    March: 31,
+    April: 30,
+    May: 31,
+    June: 30,
+    July: 31,
+    August: 31,
+    September: 30,
+    October: 31,
+    November: 30,
+    December: 31,
+};
+
+
+function daysInMonth() {
+    let selectDropdown = document.getElementById("js-selectMonth");
+    let selectedMonthValue = selectDropdown.options[selectDropdown.selectedIndex].value // Get month value
+    let selectedMonthName = monthsNames[selectedMonthValue] // Get month value
+    console.log(selectedMonthName);
+
+    if (selectedMonthName == "February")  {
+        let selectDay = document.getElementById("js-selectDay");
+        let daysInMonth = 28;
+        //selectDay.empty();
+        clearAll();
+        //console.log(selectDropdown.empty());
+        // Loop to create day option element and display day number
+        for (let day = 1; day < daysInMonth + 1; day++) { // day = 1; 1 < 32; 1 + 2;
+            numberDays += day +  ","; // x += y // x = x + y // "" + 1,2,3,4 ..
+            let option = document.createElement("option"); // Create option element
+            document.getElementById("js-selectDay").appendChild(option).value = day;  // Add element to dropdown select list
+
+            let dayNumber = document.createTextNode(day + "."); // Create option element day number node .
+            option.appendChild(dayNumber); // Append day number node to option element
+}
+
+        console.log(daysInMonth);
+        return daysInMonth;
+    }
+
+    console.log(selectedMonthName);
+
+    let daysInMonth = monthDays[selectedMonthName];
+    console.log(daysInMonth);
+    return daysInMonth;
+} */
 
 
 
@@ -138,6 +217,7 @@ function displayTime() {
 
 
 
+
 // Numbers od days in one month 1-31
 let numberDays = "";
 
@@ -148,10 +228,10 @@ let monthlength = monthsNames.length;
 let years = "";
 
 
+
 // Loop to create day option element and display day number
 for (let day = 1; day < 32; day++) { // day = 1; 1 < 32; 1 + 2;
     numberDays += day +  ","; // x += y // x = x + y // "" + 1,2,3,4 ..
-
     let option = document.createElement("option"); // Create option element
     document.getElementById("js-selectDay").appendChild(option).value = day;  // Add element to dropdown select list
 
@@ -200,9 +280,7 @@ for (let year = todayYear; year > todayYear - 151; year--) { // year = today ; y
 function getBirthDay() {
     let selectDropdown = document.getElementById("js-selectDay"); // Day Dropdown list
     let selectedDay = selectDropdown.options[selectDropdown.selectedIndex].value; // Get day value
-    //validate();
-    //displayIndex();
-    validateDay();
+    validateDay(); // Validate input
     return selectedDay;
 }
 
@@ -211,7 +289,7 @@ function getBirthDay() {
 function getBirthMonth() {
     let selectDropdown = document.getElementById("js-selectMonth"); // Month Dropdown list
     let selectedMonth = selectDropdown.options[selectDropdown.selectedIndex].value; // Get month value
-    //validate();
+    validateMonth(); // Validate input
     return selectedMonth;
 }
 
@@ -220,7 +298,8 @@ function getBirthMonth() {
 function getBirthYear() {
     let selectDropdown = document.getElementById("js-selectYear"); // Year dropdown list
     let selectedYear = selectDropdown.options[selectDropdown.selectedIndex].value; // Get year value
-    //validate();
+    validateYear(); // Validate input
+    //isLeapYear(); // Check if year is leap 
     return selectedYear;
 }
 
@@ -265,14 +344,8 @@ function setNextBirthDate() {
         console.log(todayYear);
     }
 
-    
     let nextBirthDate = new Date(todayYear, birthMonth, birthDate);
-    //console.log(todayDate);
-    //console.log(todayMonth);
-    //console.log(todayYear);
-    //console.log(birthDate);
-    //console.log(birthMonth);
-    console.log(nextBirthDate);
+
     return nextBirthDate;
 }
 
@@ -331,28 +404,24 @@ function yearLength() {
 function calcDaysOld() {
     let selectedDate = setBirthDate();
     let daysOld = (today.getTime() - selectedDate.getTime()) / dayLength();
-    // console.log(daysOld)
     return daysOld;
 }
 
 function calcWeeksOld() {
     let selectedDate = setBirthDate();
     let weeksOld = (today.getTime() - selectedDate.getTime()) / weekLength();
-    //console.log(weeksOld)
     return weeksOld;
 }
 
 function calcMonthOld() {
     let selectedDate = setBirthDate();
     let monthsOld = (today.getTime() - selectedDate.getTime()) / monthLength();
-    //console.log(monthsOld)
     return monthsOld;
 }
 
 function calcYearsOld() {
     let selectedDate = setBirthDate();
     let yearsOld = (today.getTime() - selectedDate.getTime()) / yearLength();
-    //console.log(monthsOld)
     return yearsOld;
 }
 
@@ -365,48 +434,234 @@ function calcYearsOld() {
 
 
 // -----------------------------------------------------------------------------
-// ------------------------ FUNCTIONS TO DISPLAY RESULTS  -----------------------
+// ---------------------------- VALIDATE INPUT DATA  ---------------------------
 // -----------------------------------------------------------------------------
 
-function showData() {
-    let validate = validateDay();
 
-    if (validate == true) {
-        displayResults();
+// Mesages to display
+const message = {
+    error: {
+        day: "Please select day",
+        month: "Please select month",
+        year: "Please select year"
+    },
+    leapYear: "This is leap year"
+}
+
+
+// Function to validate input day and display message
+function validateDay() {
+    let dropDownDay = document.getElementById("js-selectDay");
+    let messageElem = document.getElementById("js-day-container");
+    let collection = document.getElementById("js-day-container").children;
+    
+
+    if (dropDownDay.selectedIndex == 0) {
+        dropDownDay.style.marginBottom = "0";
+        console.log(dropDownDay.style.marginBottom)
+    } else {
+        dropDownDay.style.marginBottom = "";
+    }
+
+    dropDownDay = dropDownDay.selectedIndex;
+
+    if (dropDownDay == 0) {
+        collection[2].style.color = 'red';
+        messageElem.querySelector('small').innerHTML = message.error.day;
+        dropDownDay = document.getElementById("js-selectDay");
+        dropDownDay.classList.add("error-shadow");
+        return false;
+    } else {
+        dropDownDay = document.getElementById("js-selectDay");
+        dropDownDay.classList.contains('error-shadow');
+        dropDownDay.classList.remove('error-shadow');
+        messageElem.querySelector('small').innerHTML = "";
+        messageElem.style.color = '';
+        return true
     }
 }
 
 
-function displayContent() {
-    let content = document.querySelector("#js-content");
+// Function to validate input month and display message
+function validateMonth() {
+    let dropDownMonth = document.getElementById("js-selectMonth");
+    let messageElem = document.getElementById("js-month-container");
+    let collection = document.getElementById("js-month-container").children;
+
+    if (dropDownMonth.selectedIndex == 0) {
+        dropDownMonth.style.marginBottom = "0";
+        console.log(dropDownMonth.style.marginBottom)
+    } else {
+        dropDownMonth.style.marginBottom = "";
+    }
+
+    dropDownMonth = dropDownMonth.selectedIndex;
     
+    if (dropDownMonth == 0) {
+        collection[2].style.color = 'red';
+        messageElem.querySelector('small').innerHTML = message.error.month;
+        dropDownMonth = document.getElementById("js-selectMonth");
+        dropDownMonth.classList.add("error-shadow");
+        return false;
+    } else {
+        dropDownMonth = document.getElementById("js-selectMonth");
+        dropDownMonth.classList.contains('error-shadow');
+        dropDownMonth.classList.remove('error-shadow');
+        messageElem.querySelector('small').innerHTML = "";
+        messageElem.style.color = '';
+        return true
+    }
 }
 
-// Function to toggle content and results
-function displayResults() {
 
+// Function to validate input year and display message
+function validateYear() {
+    let dropDownYear = document.getElementById("js-selectYear");
+    let messageElem = document.getElementById("js-year-container");
+    let collection = document.getElementById("js-year-container").children;
+
+    if (dropDownYear.selectedIndex == 0) {
+        dropDownYear.style.marginBottom = "0";
+        console.log(dropDownYear.style.marginBottom)
+    } else {
+        dropDownYear.style.marginBottom = "";
+    }
+
+    dropDownYear = dropDownYear.selectedIndex;
+    
+    if (dropDownYear == 0) {
+        collection[2].style.color = 'red';
+        messageElem.querySelector('small').innerHTML = message.error.year;
+        dropDownYear = document.getElementById("js-selectYear");
+        dropDownYear.classList.add("error-shadow");
+        return false;
+    } else {
+        dropDownYear = document.getElementById("js-selectYear");
+        dropDownYear.classList.contains('error-shadow');
+        dropDownYear.classList.remove('error-shadow');
+        messageElem.querySelector('small').innerHTML = "";
+        messageElem.style.color = '';
+        return true
+    }
+}
+
+// Function to check if all fields are selected
+function validate() {
+    let validate = [validateDay(), validateMonth(), validateYear()];
+
+    if (validate[0] === false || validate[1] === false || validate[2] === false) {
+        console.log(validate)
+        return false;
+    } else {
+        return true;
+    }
+}
+
+
+// Function to check if selected year is leap year 
+function isLeapYear() {
+    let selectDropdown = document.getElementById("js-selectYear"); // Year dropdown list
+    let selectedYear = selectDropdown.options[selectDropdown.selectedIndex].value; // Get year value
+
+    if ((0 == selectedYear % 4) && (0 != selectedYear % 100) || (0 == selectedYear % 400)) {
+        console.log(selectedYear + ' is a leap year');
+        return true;
+    } else {
+        console.log(selectedYear + ' is not a leap year');
+        return false;
+    }
+}
+
+
+// Return selected value as number 
+function monthSelected() {
+    let selectDropdown = document.getElementById("js-selectMonth"); // Month dropdown list
+    let selectedMonth = selectDropdown.options[selectDropdown.selectedIndex].value; // Get year value
+    let selectedValue = parseInt(selectedMonth, 10);
+    return selectedValue;
+}
+
+
+// Check if selected month is february
+function IsFebruary() {
+    let selectedMonth = monthSelected();
+    
+    if (selectedMonth === 1) {
+        return true;
+    } else {
+        return false;
+    }
+}   
+
+
+
+// -----------------------------------------------------------------------------
+// -----------------------------------  END  -----------------------------------
+// -----------------------------------------------------------------------------
+
+
+
+// -----------------------------------------------------------------------------
+// -------------------------- FUNCTIONS TO DISPLAY DATA  -----------------------
+// -----------------------------------------------------------------------------
+
+
+
+// Function show data
+function showData() {
+    let valid = validate();
+
+    if (valid === true) {
+        displayResults();
+    } else {
+        displayHome();
+    }
+}
+
+
+// Function to reset data
+function reset() {
+    let dropDownDay = document.getElementById("js-selectDay");
+    let dropDownMonth = document.getElementById("js-selectMonth");
+    let dropDownYear = document.getElementById("js-selectYear");
+    dropDownDay.selectedIndex = 0;
+    dropDownMonth.selectedIndex = 0;
+    dropDownYear.selectedIndex = 0;
+    displayHome();
+}
+
+
+// Function to display home
+function displayHome() {
+    let home = document.querySelector("#js-home");
     let results = document.querySelector("#js-results");
-    let content = document.querySelector("#js-content");
     let footer = document.querySelector("#js-footer");
 
+    results.style.display = "none";
+    home.style.display = "block";
+    footer.style.position = "fixed";
+    
+    bodyHeightFull();
+    //removeMargin();
+}
 
-    if (results.style.display == "none") {
-        results.style.display = "block";
-        content.style.display = "none";
-        footer.style.position = "relative";
-    } else {
-        results.style.display = "none";
-        content.style.display = "block";
-        footer.style.position = "fixed";
-    }
+
+// Function to display results
+function displayResults() {
+    let results = document.querySelector("#js-results");
+    let home = document.querySelector("#js-home");
+    let footer = document.querySelector("#js-footer");
+    
+    results.style.display = "block";
+    home.style.display = "none";
+    footer.style.position = "relative";
 
     bodyHeightFull();
+
     displayBirthDate();
-    setNextBirthDate();
     displayRemainingDays();
     displayNextBirthday();
     displayAge();
-        
 }
 
 
@@ -429,8 +684,6 @@ function displayBirthDate() {
     document.getElementById("js-displayBirthDayName").innerText = birthDayName;
     document.getElementById("js-displayBirthDayName").textContent = birthDayName;
 
-
-    return  birthDateFormated; // Just returned for console log
 }
 
 
@@ -439,27 +692,23 @@ function displayRemainingDays() {
     let todayDate = today.getTime();
     let birthDate = setNextBirthDate().getTime();
     let daysRemaining = (birthDate - todayDate) / dayLength();
-    //console.log(todayDate)
-    //console.log(birthDate)
-    //console.log(daysRemaining)
-    
+
     document.getElementById("js-days-remaining").innerText = Math.ceil(daysRemaining);
     document.getElementById("js-days-remaining").textContent = Math.ceil(daysRemaining);
 }
 
 
+// Function to display day name for next birthday
 function displayNextBirthday() {
     let birthDay = setNextBirthDate().getDay();  // Day 0-6, 0 = Sunday, 6 = Saturday
     let birthDayName = dayNames[birthDay]; // Monday ....
-
-    console.log(birthDay)
-    console.log(birthDayName)
 
     document.getElementById("js-displayNextBirthDay").innerText = birthDayName;
     document.getElementById("js-displayNextBirthDay").textContent = birthDayName;
 }
 
 
+// Display old in days,weeks,months,years
 function displayAge() {
     let daysOld = calcDaysOld();
     let weeksOld = calcWeeksOld();
@@ -512,132 +761,19 @@ function bodyHeightFull() {
     let results = document.getElementById("js-results");
     let body = document.getElementById("js-body");
     let fullHeight = 100 + "%";
+    let footer = document.getElementById("js-footer");
     
 
     if (results.style.display === "block") {
         body.style.height = fullHeight;
+        footer.style.left = "0";
     } else {
-        body.style.height = ""
+        body.style.height = "";
+        footer.style.left = "";
     }
 
 }
 
-
-
-// -----------------------------------------------------------------------------
-// -----------------------------------  END  -----------------------------------
-// -----------------------------------------------------------------------------
-
-
-
-// -----------------------------------------------------------------------------
-// ----------------------------- RESET AND DISPLAY CONTENT ---------------------
-// -----------------------------------------------------------------------------
-
-
-const message = {
-    sucess: "Congrats sucess",
-    error: "Please select day",
-    leapYear: "This is leap year"
-}
-
-
-// Function to reset dropdowns
-function reset() {
-    let dropDownDay = document.getElementById("js-selectDay");
-    let dropDownMonth = document.getElementById("js-selectMonth");
-    let dropDownYear = document.getElementById("js-selectYear");
-    dropDownDay.selectedIndex = 0;
-    dropDownMonth.selectedIndex = 0;
-    dropDownYear.selectedIndex = 0;
-    displayResults();
-}
-
-function displayIndex() {
-    let index = document.getElementById("js-selectDay").selectedIndex;
-    console.log(index)
-}
-
-
-function validateDay() {
-    let dropDownDay = document.getElementById("js-selectDay");
-    let messageElem = document.getElementById("js-day-container")
-    
-    dropDownDay = dropDownDay.selectedIndex;
-    
-    if (dropDownDay == 0) {
-        messageElem.style.color = 'red';
-        messageElem.querySelector('small').innerHTML = message.error;
-        dropDownDay = document.getElementById("js-day-container");
-        dropDownDay.classList.add("error");
-        return false;
-    } else {
-        dropDownDay = document.getElementById("js-day-container");
-        dropDownDay.classList.contains('error');
-        dropDownDay.classList.remove('error');
-        messageElem.querySelector('small').innerHTML = "";
-        messageElem.style.color = '';
-        return true
-    }
-}
-
-function validateForm(){
-
-    /* let selectOption = document.getElementById("js-select-elements");
-    let dropDowns = selectOption.getElementsByTagName("select");
-    console.log(dropDowns[1].selectedIndex)
-
-    for (const item in dropDowns) {
-        console.log(item)
-    }
-
-    for (i= 0; i < dropDowns.length; i++) {
-        console.log(i)
-    }
-
-    Object.entries(dropDowns).forEach(
-        ([key, value]) => console.log(key, value)
-    ); */
-
-
-
-}
-
-
-
-function validate(){
-
-    let dropDownDay = document.getElementById("js-selectDay");
-    let dropDownMonth = document.getElementById("js-selectMonth");
-    let dropDownYear = document.getElementById("js-selectYear");
-
-    let forms = [dropDownDay, dropDownMonth, dropDownYear];
-
-    if (forms[0].selectedIndex == 0 || forms[1].selectedIndex == 0 || forms[2].selectedIndex == 0) {
-        dropDownDay = document.getElementById("js-day-container");
-        dropDownDay.classList.add("error");
-    } else {
-        dropDownDay = document.getElementById("js-day-container");
-        dropDownDay.classList.remove("error");
-    }
-
-    if (forms[1].selectedIndex == 0) {
-        dropDownMonth = document.getElementById("js-month-container");
-        dropDownMonth.classList.add("error");
-    } else {
-        dropDownMonth = document.getElementById("js-month-container");
-        dropDownMonth.classList.remove("error");
-    }
-
-    if (forms[2].selectedIndex == 0) {
-        dropDownYear = document.getElementById("js-year-container");
-        dropDownYear.classList.add("error");
-    } else {
-        dropDownYear = document.getElementById("js-year-container");
-        dropDownYear.classList.remove("error");
-    }
-
-}
 
 
 // -----------------------------------------------------------------------------
@@ -648,3 +784,62 @@ function validate(){
 // Display date and time
 displayDate();
 displayTime();
+
+
+
+
+// Check preferred theme, set theme and set logo
+let logo = document.getElementById('js-logo-image');
+let checkbox = document.querySelector("input[name=js-theme__toggle--input]");
+
+if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    checkbox.checked = true;
+    logo.src = "/assets/images/logo/logo-light.png";
+} else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    checkbox.checked = false;
+    console.log(checkbox)
+    logo.src = "/assets/images/logo/logo-dark.png";
+}
+
+
+
+// switch theme if checkbox is engaged and change logo
+checkbox.addEventListener('change', (cb) => {
+    document.documentElement.setAttribute(
+        'data-theme',
+        cb.target.checked ? 'dark' : 'light'
+    );
+
+    if (logo.src.match("/assets/images/logo/logo-light.png")) {
+        logo.src = "/assets/images/logo/logo-dark.png";
+        console.log("je")
+    }
+    else {
+        logo.src = "/assets/images/logo/logo-light.png";
+        console.log("nije")
+    }
+});
+
+
+/* 
+    Function to check if message is rendered
+    and remove margin from form select dropdowns
+
+*/
+function removeMargin() {
+    let nodes = document.querySelectorAll("select");
+    let message = document.querySelectorAll("small");
+    console.log(nodes)
+    console.log(message[0].style.cssText)
+
+    for (let i = 0; i < nodes.length; i++) {
+        //console.log(nodes)
+           // message
+        if (message[0].style.cssText == "color: red;") {
+            nodes[i].style.margin = "0";
+        }
+    }
+}
+

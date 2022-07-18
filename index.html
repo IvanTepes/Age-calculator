@@ -14,101 +14,92 @@
         <link rel="stylesheet" href="assets/css/abstracts/normalize.css">
         <!-- CSS -->
         <link rel="stylesheet" href="assets/css/main.css">
-
+        
         <title>How Old I am ?</title>
-
+        
     </head>
     <body id="js-body">
     <!-- Body -->
         <!-- Navbar -->
         <nav class="navbar">
             <div class="container-fluid">
-                <a class="navbar__logo navbar-brand m-0" href="#">
-                    <img src="assets/images/logo/logo--gray.png" alt="" class="navbar__logo--image d-inline-block align-text-top">
+                <a class="navbar-brand" href="#">
+                    <img id="js-logo-image" class="d-inline-block align-text-top navbar__logo--image"  alt="">
                 </a>
-                <span class="navbar__brand">
-                    How old I am?
-                </span>
-                <span class="theme__toggle">
-                    <a href="#" class="theme__toggle--btn">
-                        <div class="square square"></div>
-                        <div class="square square-x"></div>
-                        <div class="square circle"></div>
-                        <div class="square circle circle-x"></div>
-                    </a>
-                </span>
+                <div class="navbar__brand">
+                    <h2>How old I am?</h2>
+                </div>
+                <div id="js-theme-toggle" class="theme__toggle--btn">
+                    <input type="checkbox" name="js-theme__toggle--input" id="js-theme__toggle--input" class="theme__toggle--input">
+                        <label for="js-theme__toggle--input"></label>
+                </div>
             </div>
         </nav>
-        <!-- Content -->
-        <div id="js-content" class="container-fluid content ">
-            <div class="row content-container">
-                <!-- Content Cta -->
-                <div class="col-12 content-container__item">
-                    <h3 class="content-container__item--cta">Find out How old are you in months, weeks, days!</h3>
+        <!-- Home -->
+        <div id="js-home" class="container-fluid home ">
+            <div class="row home-container">
+                <!-- Home Cta -->
+                <div class="col-12 home-container__item">
+                    <h3 class="home-container__item--cta">Find out How old are you in months, weeks, days!</h3>
                 </div>
-                <!-- Content Today Date -->
-                <!-- <div class="col-12 content-container__item">
-                    <h3 id="js-date__display" class="clock content-container__item--today-date" onload="showDate()";></h3>
-                    <h3 id="js-clock__display" class="clock content-container__item--today-time" onload="showTime()";></h3>
-                </div> -->
-                <!-- Content Select -->
-                <div id="js-elements" class="row content-container__item content-container__item--select">
-                    <!-- Content Birth Day -->
-                    <div id="js-day-container" class="col-sm-3 col-md-3 col-lg-3 content-container__item-container">
-                        <h5 class="content-container__item--header">Birth Day</h5>
-                        <select id="js-selectDay" class="form-select content-container__item--select-form" onchange="getBirthDay()" aria-label="Select Day">
+                <!-- Home Select -->       
+                <div id="js-elements" class="row home-container__item home-container__item--select">
+                    <!-- Home Birth Day -->
+                    <div id="js-day-container" class="col-sm-3 col-md-3 col-lg-3 home-container__item-container">
+                        <h5 class="home-container__item--header">Birth Day</h5>
+                        <select id="js-selectDay" class="form-select home-container__item--select-form" onchange="getBirthDay()" aria-label="Select Day">
                             <option selected disabled>Select day</option>
                         </select>
                         <small></small>
                     </div>
-                    <!-- Content Birth Month -->
-                    <div id="js-month-container" class="col-sm-3 col-md-3 col-lg-3 content-container__item-container">
-                        <h5 class="content-container__item--header">Birth Month</h5>
-                        <select id="js-selectMonth" class="form-select content-container__item--select-form" onchange="getBirthMonth()" aria-label="Select Month">
+                    <!-- Home Birth Month -->
+                    <div id="js-month-container" class="col-sm-3 col-md-3 col-lg-3 home-container__item-container">
+                        <h5 class="home-container__item--header">Birth Month</h5>
+                        <select id="js-selectMonth" class="form-select home-container__item--select-form" onchange="getBirthMonth()" aria-label="Select Month">
                             <option selected disabled>Select Month</option>
                         </select>
                         <small></small>
                     </div>
-                    <!-- Content Birth Year -->
-                    <div id="js-year-container" class="col-sm-3 col-md-3 col-lg-3 content-container__item-container">
-                        <h5 class="content-container__item--header">Birth Year</h5>
-                        <select id="js-selectYear" class="form-select content-container__item--select-form" onchange="getBirthYear()" aria-label="Select Year">
+                    <!-- Home Birth Year -->
+                    <div id="js-year-container" class="col-sm-3 col-md-3 col-lg-3 home-container__item-container">
+                        <h5 class="home-container__item--header">Birth Year</h5>
+                        <select id="js-selectYear" class="form-select home-container__item--select-form" onchange="getBirthYear()" aria-label="Select Year">
                             <option selected disabled>Select Year</option>
                         </select>
                         <small></small>
                     </div>
                 </div>
-                <!-- Content Button -->
-                <div class="col-12 content-container__item">
-                    <button type="button" class="btn content-container__item--button" onclick="displayResults()">Calculate</button>
+                <!-- Home Button -->
+                <div class="col-12 home-container__item">
+                    <button type="button" class="btn home-container__item--button" onclick="showData()">Calculate</button>
                 </div>
             </div>
         </div>
         <!-- Results -->
         <div id="js-results" class="results container-fluid mt-5" style="display: none;">
-            <div class="row result justify-content-center">
+            <div class="row result">
                 <!-- Birth date -->
-                <div class="col-10 result__item text-center mt-5">
+                <div class="col-10 col-lg-6 result__item text-center mt-5">
                     <h2 class="result__item--header">Birth date</h2>
                     <h4 id="js-displayBirthDate" class="result__item--date"></h4>
                 </div>
                 <!-- Birth day -->
-                <div class="col-10 result__item text-center mt-5">
+                <div class="col-10 col-lg-6 result__item text-center mt-5">
                     <h2 class="result__item--header">Day of birth</h2>
                     <h4 id="js-displayBirthDayName" class="result__item--date"></h4>
                 </div>
                 <!-- Next birth days remaining days-->
-                <div class="col-10 result__item text-center mt-5">
+                <div class="col-10 col-lg-6 result__item text-center mt-5">
                     <h2 class="result__item--header">Days until next birthday</h2>
                     <h4 id="js-days-remaining" class="result__item--date"></h4>
                 </div>
                 <!-- Next birthday on -->
-                <div class="col-10 result__item text-center mt-5">
+                <div class="col-10 col-lg-6 result__item text-center mt-5">
                     <h2 class="result__item--header">Next birthday on</h2>
                     <h4 id="js-displayNextBirthDay" class="result__item--date"></h4>
                 </div>
                 <!-- Alive for table -->
-                <div class="col-10 result__item text-center mt-5">
+                <div class="col-10 col-lg-6 result__item text-center mt-5">
                     <h2 class="result__item--header">You have been alive for</h2>
                     <table class="table table-striped">
                         <tbody>
@@ -132,7 +123,7 @@
                     </table>
                 </div>
                 <!-- New date button -->
-                <div class="col-10 result__button mt-5 text-center">
+                <div class="col-10 col-lg-6 result__button mt-5 text-center">
                     <button type="button" class="btn result__button--new-date" onclick="reset()">New Date</button>
                 </div>
             </div>

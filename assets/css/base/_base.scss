@@ -3,28 +3,40 @@
 body {
     height: 100vh;
 
-    background-color: $color__theme;
-    color: $color__text--dark;
+    background-color: var(--color-background);
+    color: var(--font-color);
+    text-shadow: var(--text-shadow);
 
     font-family: $secondary__font;
     font-size: 21px;
+}
 
-    box-shadow: inset rgba(104, 139, 255, 0.1) 0px 48px 100px 0px,
-                inset rgba(17, 12, 46, 0.15) 0px 30px 100px 0px;
+.form-select {
+    color: var(--font-color);
+    margin: 1rem 0 2rem auto;
+    background-image: url(/assets/images/arrow-down.svg);
+    background-size: 25px 25px;
+
+    &:focus {
+        box-shadow: var(--box-shadow);
+    }
+
+    &:hover {
+        box-shadow: var(--box-inset);
+    }
+
+}
+
+// To add red shadow to select buttons
+.error-shadow {
+    box-shadow: var(--error)!important;
 }
 
 
-.box-shadow {
-    box-shadow: inset rgba(104, 139, 255, 0.1) 0px 48px 100px 0px,
-    inset rgba(17, 12, 46, 0.15) 0px 30px 100px 0px;
+input[type="checkbox"]{
+    display: none;
 }
 
-.content-container__item-container {
-    box-shadow: inset 3px 2px 5px 0 rgb(255 255 255 / 50%), rgb(104 139 255 / 10%) 7px 3px 10px, rgb(0 0 0 / 10%) 7px 5px 10px;
-    margin: 1rem;
-    border-radius: 10px;
-}
 
-.error {
-    box-shadow: inset 3px 2px 5px 0 rgb(255 255 255 / 50%), rgb(104 139 255 / 10%) 7px 3px 10px, rgb(255 0 0 / 39%) 0px 0px 5px 5px;
-}
+
+

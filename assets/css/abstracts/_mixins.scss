@@ -1,9 +1,19 @@
-@mixin drop-shadow {
 
-    box-shadow: inset 3px 2px 5px 0 rgb(255 255 255 / 50%), rgb(104 139 255 / 10%) 7px 3px 10px, rgb(0 0 0 / 10%) 7px 5px 10px;
-    border-radius: 10px
+// Mixin to add shadow to element / elevated it
+@mixin element-shadow($shadow, $border-radius) {
+    box-shadow: $shadow;
+    border-radius: $border-radius;
 }
 
-@mixin center-evenly {
-    
+// Mixin button pressed
+@mixin element--presed() {
+  
+}
+
+// Mixin to align elements in middle and direction them to column
+@mixin column-align--middle() {
+  display: flex!important;
+  flex-direction: column!important;
+  align-content: space-around!important;
+  justify-content: center!important;
 }

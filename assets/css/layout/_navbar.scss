@@ -2,22 +2,29 @@
 
 // Navbar
 
+.navbar > .container-fluid {
+    width: 90%;
+    border-bottom: 5px solid #bbb;
+    box-shadow: white 0 1px 0;
+}
 
 .navbar {
-    height: 6rem;
+    height: 5rem;
     width: 100%;
+    padding: 0px;
 
 
     &__brand {
         vertical-align: sub;
         font-family: $primary__font;
         font-size: 2rem;
+        color: var(--font-color);
     }
 
 
     &__logo--image {
-        height: 4rem;
-        width: 4rem;
+        height: 3.5rem;
+        width: 3.5rem;
     }
 }
 

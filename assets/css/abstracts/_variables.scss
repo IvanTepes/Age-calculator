@@ -3,8 +3,71 @@
 $primary__font: 'Abril Fatface', cursive;
 $secondary__font: 'Roboto', sans-serif;
 
+//Border Radius
+$border-radius: 10px;
+
+// Base
+$white: #fff;
+$black: #000;
+
+$black-50: rgb(0 0 0 / 50%);
+$black-80: rgb(0 0 0 / 80%);
+
+// Grayscalce
+$gray-100: #1c1c1c;
+$gray-200: #585757;
+$gray-300: #707070;
+$gray-400: #292929;
 
 
-// Colors
-$color__theme:  #e6e7ee;
-$color__text--dark: #4a4b51;
+// Red
+$D60: #5d1212;
+$D40: #8c1a1a;
+$D20: #ba2323;
+$base-light: #e92c2c;
+$L-20: #f96767;
+$L-40: #fa8d8d;
+$L-60: #fcb3b3;
+
+
+
+// Theme color
+$theme-light: #ececec;
+$theme-dark: #2f2f2f;
+
+
+// Text color
+$font-light: $white;
+$font-dark: #343434;
+
+
+// Text shadow
+$text-shadow-light: 0 1px 0 $white;
+$text-shadow-dark: 0 1px 0 $black;
+
+
+// Box shadow
+$box-shadow-light: inset $white    0 1px 0, $black-50 0 1px 3px 0px;
+$box-shadow-dark:  inset $gray-200 0 1px 0, $black-80 0 1px 3px 0px;
+
+// Box pressed
+$box-inset-light: #fff 0 1px 0, inset rgb(0 0 0 / 50%) 0 1px 3px 0px;
+$box-inset-dark: #585757 0 1px 0, inset rgb(0 0 0 / 80%) 0 1px 3px 0px;
+
+
+/* $button-pressed--light
+$button-pressed--dark */
+
+// Buttons
+/* $button-normal--light
+$button-normal--dark
+
+$button-pressed--light
+$button-pressed--dark
+
+$button-hover--light
+$button-hover--dark
+
+$button-focused */
+
+$error-shadow: inset #585757 0 0 0, rgb(255 0 0 / 80%) 0 1px 10px 0px;

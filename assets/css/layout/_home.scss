@@ -1,0 +1,72 @@
+
+
+// Home
+
+
+
+// Home section width and height
+.home {
+    width: 100%;
+    height: calc(100% - 10rem);
+}
+
+.home-container__item-container {
+    @include element-shadow(var(--box-shadow), $border-radius);
+
+    margin: 1rem;
+}
+
+.home-container {
+    height: 100%!important;
+    align-content: space-evenly!important;
+    align-items: center!important;
+    justify-content: center!important;
+
+
+    &__item {
+        text-align: center;
+
+
+        &--header {
+            font-family: $primary__font;
+        }
+
+
+        &--select {
+            justify-content: center;
+        }
+
+
+        &--select-form {
+            @include element-shadow(var(--box-shadow), $border-radius);
+
+            background-color: var(--color-background);
+            border: none;
+            letter-spacing: 1px;
+
+        }
+
+
+        &--button {  
+            @include element-shadow(var(--box-shadow), $border-radius);
+
+            padding: 0.7rem 0.95rem;
+            border: none;
+            color: var(--font-color);
+            font-family: $secondary__font;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            
+            &:focus {
+                box-shadow: var(--box-shadow);
+            }
+        
+            &:hover {
+                box-shadow: var(--box-inset);
+                background-color: $gray-400;
+            }
+        }
+    } 
+    
+}
