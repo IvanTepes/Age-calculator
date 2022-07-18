@@ -1,4 +1,4 @@
-// Find BUG ctrl + f ---> BUG 
+// Find BUG ctrl + f ---> BUG
 
 
 // -----------------------------------------------------------------------------
@@ -30,7 +30,7 @@ const dayNames = [
     'Wednesday',
     'Thursday',
     'Friday',
-    'Saturday',  
+    'Saturday',
 ]
 
 
@@ -56,7 +56,7 @@ let todayDayName = dayNames[today.getDay()]; // Today Day Name
 let todayMonth = today.getMonth();
 let todayMonthName = monthsNames[today.getMonth()] // Today Month Name
 
-let todayYear = today.getFullYear(); // Today Year 
+let todayYear = today.getFullYear(); // Today Year
 
 
 
@@ -90,7 +90,7 @@ function displayDate() {
 }
 
 
-// Function to display today time 
+// Function to display today time
 function displayTime() {
     let date = new Date();
 
@@ -99,25 +99,25 @@ function displayTime() {
     let s = date.getSeconds(); // 0 - 59
 
     let session = "AM";
-    
+
     if(h == 0){
         h = 12;
     }
-    
+
     if(h > 12){
         h = h - 12;
         session = "PM";
     }
-    
+
     h = (h < 10) ? "0" + h : h;
     m = (m < 10) ? "0" + m : m;
     s = (s < 10) ? "0" + s : s;
-    
+
     let time = h + ":" + m + ":" + s + " " + session;
 
     document.getElementById("js-display__time").innerText = time;
     document.getElementById("js-display__time").textContent = time;
-    
+
     setTimeout(displayTime, 1000);
 }
 
@@ -132,7 +132,7 @@ function displayTime() {
 // ------------------  DETERMINATED LENGHT OF SELECTED MONTH  ------------------
 // -----------------------------------------------------------------------------
 
-/* 
+/*
     To dynamically determinate month length
     * try later *
 */
@@ -224,7 +224,7 @@ let numberDays = "";
 // Numbers of month in one year 0-11
 let monthlength = monthsNames.length;
 
-// Years number from today - 150 years 
+// Years number from today - 150 years
 let years = "";
 
 
@@ -240,25 +240,25 @@ for (let day = 1; day < 32; day++) { // day = 1; 1 < 32; 1 + 2;
 }
 
 
-// Loop to create month option element and display month name 
+// Loop to create month option element and display month name
 for (let i = 0; i < monthlength; i++) { // index = 0; 0 < 12; 0 = 1;
-    
-    let option = document.createElement("option"); // Create option element 
+
+    let option = document.createElement("option"); // Create option element
     document.getElementById("js-selectMonth").appendChild(option).value = i; // Add element to dropdown list
 
-    let monthName = document.createTextNode(monthsNames[i]); // Create option element month name node 
+    let monthName = document.createTextNode(monthsNames[i]); // Create option element month name node
     option.appendChild(monthName); // Append month name node to option element
 }
 
 
 // Loop to create year option element and display year number
-for (let year = todayYear; year > todayYear - 151; year--) { // year = today ; year is bigger than today- 150 -- ; today - 150 year 
-    years += year +  ","; // x += y // x = x + y // "" - 2022,2021,2020,2019 ..  
+for (let year = todayYear; year > todayYear - 151; year--) { // year = today ; year is bigger than today- 150 -- ; today - 150 year
+    years += year +  ","; // x += y // x = x + y // "" - 2022,2021,2020,2019 ..
 
     let option = document.createElement("option"); // Create option element
     document.getElementById("js-selectYear").appendChild(option).value = year;  // Add element to dropdown select list
 
-    let yearNumber = document.createTextNode(year + "."); // Create year number node . 
+    let yearNumber = document.createTextNode(year + "."); // Create year number node .
     option.appendChild(yearNumber); // Append year number node to option element
 }
 
@@ -276,7 +276,7 @@ for (let year = todayYear; year > todayYear - 151; year--) { // year = today ; y
 
 
 
-// Function to get selected Day 
+// Function to get selected Day
 function getBirthDay() {
     let selectDropdown = document.getElementById("js-selectDay"); // Day Dropdown list
     let selectedDay = selectDropdown.options[selectDropdown.selectedIndex].value; // Get day value
@@ -285,7 +285,7 @@ function getBirthDay() {
 }
 
 
-// Function to get selected Month 
+// Function to get selected Month
 function getBirthMonth() {
     let selectDropdown = document.getElementById("js-selectMonth"); // Month Dropdown list
     let selectedMonth = selectDropdown.options[selectDropdown.selectedIndex].value; // Get month value
@@ -294,12 +294,12 @@ function getBirthMonth() {
 }
 
 
-//Function to get selected Year 
+//Function to get selected Year
 function getBirthYear() {
     let selectDropdown = document.getElementById("js-selectYear"); // Year dropdown list
     let selectedYear = selectDropdown.options[selectDropdown.selectedIndex].value; // Get year value
     validateYear(); // Validate input
-    //isLeapYear(); // Check if year is leap 
+    //isLeapYear(); // Check if year is leap
     return selectedYear;
 }
 
@@ -335,9 +335,9 @@ function setNextBirthDate() {
     let birthDate = setBirthDate().getDate(); // 1-31
     let birthMonth = setBirthDate().getMonth(); // 0-11
 
-    
-    if (birthMonth > todayMonth) { // To check if aready had birthday 
-        todayYear = today.getFullYear(); //  Year 
+
+    if (birthMonth > todayMonth) { // To check if aready had birthday
+        todayYear = today.getFullYear(); //  Year
         console.log(todayYear);
     } else {
         todayYear = today.getFullYear() + 1; // Year +1 // Aready have birthday this year
@@ -454,7 +454,7 @@ function validateDay() {
     let dropDownDay = document.getElementById("js-selectDay");
     let messageElem = document.getElementById("js-day-container");
     let collection = document.getElementById("js-day-container").children;
-    
+
 
     if (dropDownDay.selectedIndex == 0) {
         dropDownDay.style.marginBottom = "0";
@@ -496,7 +496,7 @@ function validateMonth() {
     }
 
     dropDownMonth = dropDownMonth.selectedIndex;
-    
+
     if (dropDownMonth == 0) {
         collection[2].style.color = 'red';
         messageElem.querySelector('small').innerHTML = message.error.month;
@@ -528,7 +528,7 @@ function validateYear() {
     }
 
     dropDownYear = dropDownYear.selectedIndex;
-    
+
     if (dropDownYear == 0) {
         collection[2].style.color = 'red';
         messageElem.querySelector('small').innerHTML = message.error.year;
@@ -558,7 +558,7 @@ function validate() {
 }
 
 
-// Function to check if selected year is leap year 
+// Function to check if selected year is leap year
 function isLeapYear() {
     let selectDropdown = document.getElementById("js-selectYear"); // Year dropdown list
     let selectedYear = selectDropdown.options[selectDropdown.selectedIndex].value; // Get year value
@@ -573,7 +573,7 @@ function isLeapYear() {
 }
 
 
-// Return selected value as number 
+// Return selected value as number
 function monthSelected() {
     let selectDropdown = document.getElementById("js-selectMonth"); // Month dropdown list
     let selectedMonth = selectDropdown.options[selectDropdown.selectedIndex].value; // Get year value
@@ -585,13 +585,13 @@ function monthSelected() {
 // Check if selected month is february
 function IsFebruary() {
     let selectedMonth = monthSelected();
-    
+
     if (selectedMonth === 1) {
         return true;
     } else {
         return false;
     }
-}   
+}
 
 
 
@@ -640,7 +640,7 @@ function displayHome() {
     results.style.display = "none";
     home.style.display = "block";
     footer.style.position = "fixed";
-    
+
     bodyHeightFull();
     //removeMargin();
 }
@@ -651,7 +651,7 @@ function displayResults() {
     let results = document.querySelector("#js-results");
     let home = document.querySelector("#js-home");
     let footer = document.querySelector("#js-footer");
-    
+
     results.style.display = "block";
     home.style.display = "none";
     footer.style.position = "relative";
@@ -739,8 +739,8 @@ function displayAge() {
 
 
 
-/* 
-    BUG FIX ---->   Bug:    
+/*
+    BUG FIX ---->   Bug:
                             When I display the results the body is short
                             and the background color does not cover the
                             whole body.
@@ -762,7 +762,7 @@ function bodyHeightFull() {
     let body = document.getElementById("js-body");
     let fullHeight = 100 + "%";
     let footer = document.getElementById("js-footer");
-    
+
 
     if (results.style.display === "block") {
         body.style.height = fullHeight;
@@ -795,12 +795,12 @@ let checkbox = document.querySelector("input[name=js-theme__toggle--input]");
 if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.documentElement.setAttribute('data-theme', 'dark');
     checkbox.checked = true;
-    logo.src = "/assets/images/logo/logo-light.png";
+    logo.src = "assets/images/logo/logo-light.png";
 } else {
     document.documentElement.setAttribute('data-theme', 'light');
     checkbox.checked = false;
     console.log(checkbox)
-    logo.src = "/assets/images/logo/logo-dark.png";
+    logo.src = "assets/images/logo/logo-dark.png";
 }
 
 
@@ -812,18 +812,18 @@ checkbox.addEventListener('change', (cb) => {
         cb.target.checked ? 'dark' : 'light'
     );
 
-    if (logo.src.match("/assets/images/logo/logo-light.png")) {
-        logo.src = "/assets/images/logo/logo-dark.png";
+    if (logo.src.match("assets/images/logo/logo-light.png")) {
+        logo.src = "assets/images/logo/logo-dark.png";
         console.log("je")
     }
     else {
-        logo.src = "/assets/images/logo/logo-light.png";
+        logo.src = "assets/images/logo/logo-light.png";
         console.log("nije")
     }
 });
 
 
-/* 
+/*
     Function to check if message is rendered
     and remove margin from form select dropdowns
 
