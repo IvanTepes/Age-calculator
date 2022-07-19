@@ -37,7 +37,7 @@
 
     &+label::before {
 
-        content: url(assets/images/toggle/light-mode.svg);
+        content: url(/assets/images/toggle/light-mode.png);
 
         //@include element-shadow(var(--box-shadow), $border-radius);
 
@@ -57,7 +57,7 @@
 
     &:checked+label::before {
 
-        content: url(assets/images/toggle/dark-mode.svg);
+        content: url(/assets/images/toggle/dark-mode.png);
 
         background: var(--theme-color);
         @include element-shadow(var(--box-shadow), $border-radius);
