@@ -8,7 +8,7 @@
     @include column-align--middle();
 
     &__item {
-        
+
         @include element-shadow(var(--box-shadow), $border-radius);
 
         &--header {
@@ -19,20 +19,20 @@
         &--date {
             color: red;
         }
-    }  
-    
+    }
+
     &__button {
         text-align: center;
         margin-top: 3rem;
 
         &--new-date {
-            
+
             @include element-shadow(var(--box-shadow), $border-radius);
 
             margin-bottom: 1rem;
             padding: 0.7rem 0.95rem;
             border: none;
-            color: $white;
+            color: var(--font-color);
             font-family: "Roboto", sans-serif;
             font-weight: 700;
             text-transform: uppercase;
@@ -41,11 +41,12 @@
             &:focus {
                 box-shadow: var(--box-shadow);
             }
-        
+
             &:hover {
                 box-shadow: var(--box-inset);
-                background-color: $gray-400;
+                /* background-color: $gray-400;
+                color: #ececec; */
             }
         }
-    }                    
+    }
 }

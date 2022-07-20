@@ -29,6 +29,7 @@
 
         &--header {
             font-family: $primary__font;
+            letter-spacing: 1px;
         }
 
 
@@ -47,7 +48,7 @@
         }
 
 
-        &--button {  
+        &--button {
             @include element-shadow(var(--box-shadow), $border-radius);
 
             padding: 0.7rem 0.95rem;
@@ -57,16 +58,17 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            
+
             &:focus {
                 box-shadow: var(--box-shadow);
             }
-        
+
             &:hover {
                 box-shadow: var(--box-inset);
-                background-color: $gray-400;
+                /* background-color: $gray-400;
+                color: $theme-light; */
             }
         }
-    } 
-    
+    }
+
 }
