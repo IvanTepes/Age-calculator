@@ -221,7 +221,7 @@ input[type=checkbox] {
   border-radius: 10px;
 }
 .theme__toggle--btn input[type=checkbox] + label::before {
-  content: url(https://ivantepes.github.io/age-calculator_v2/assets/images/toggle/light-mode.svg);
+  content: url(https://ivantepes.github.io/age-calculator_v2/assets/images/toggle/light-mode.png);
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 10px;
@@ -231,7 +231,7 @@ input[type=checkbox] {
   line-height: 51px;
 }
 .theme__toggle--btn input[type=checkbox]:checked + label::before {
-  content: url(https://ivantepes.github.io/age-calculator_v2/assets/images/toggle/dark-mode.svg);
+  content: url(https://ivantepes.github.io/age-calculator_v2/assets/images/toggle/dark-mode.png);
   background: var(--theme-color);
   box-shadow: var(--box-shadow);
   border-radius: 10px;
